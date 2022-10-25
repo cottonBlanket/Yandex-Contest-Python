@@ -12,5 +12,6 @@ with open(file,  encoding="utf-8-sig") as test:
 
 keys = list[0]
 values = list[1:]
+
 print(keys)
 print(values)
