@@ -3,17 +3,17 @@ import math
 import re
 from prettytable import PrettyTable
 from prettytable import ALL
-import os
 
 
-def DeleteTags(line: str):
+def delete_tags(line: str):
     if line.find("\n") != -1:
         return line
     new_field = re.sub(r"\<[^>]*\>", '', line)
     new_field = re.sub(r'\s+', ' ', new_field)
     return new_field
 
-def DeleteSpace(line: str):
+
+def delete_spaces(line: str):
     arr = line.strip().split(' ')
     new_line = ''
     for word in arr:
