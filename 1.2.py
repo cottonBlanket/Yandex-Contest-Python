@@ -17,7 +17,7 @@ i = average % 1000
 
 if average % 100 != 11 and i == 1 :
     rubles = 'рубль'
-elif i > 1 and i < 5 and not (average % 100 > 11 and average % 100 < 20):
+elif i > 1 and i < 5 and not(average % 100 > 11 and average % 100 < 20):
     rubles = 'рубля'
 else:
     rubles = 'рублей'
