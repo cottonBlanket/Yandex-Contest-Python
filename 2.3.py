@@ -15,29 +15,29 @@ class Vacancy:
         self.Area_Name = area_name
 
 
-def GetCorrectWord(inputStr, entType):
+def get_correct_word(input_str, enter_type):
     repeats = ["раз", "раза", "раз"]
     rubles = ["рубль", "рубля", "рублей"]
     vac = ["вакансия", "вакансии", "вакансий"]
     skills = ["скилла", "скиллов", "скиллов"]
     cities = ["города", "городов", "городов"]
-    currentMass = repeats
-    if entType == "Rubles":
-        currentMass = rubles
-    elif entType == "Vac":
-        currentMass = vac
-    elif entType == "Skills":
-        currentMass = skills
-    elif entType == "Cities":
-        currentMass = cities
-    inputInt = int(inputStr)
-    last2Int = int(inputStr[-2:])
-    lastInt = int(inputStr[-1])
+    current_mass = repeats
+    if enter_type == "Rubles":
+        current_mass = rubles
+    elif enter_type == "Vac":
+        current_mass = vac
+    elif enter_type == "Skills":
+        current_mass = skills
+    elif enter_type == "Cities":
+        current_mass = cities
+    inputInt = int(input_str)
+    last2Int = int(input_str[-2:])
+    lastInt = int(input_str[-1])
     if (last2Int < 12 or last2Int > 14) and (lastInt >= 2 and lastInt <= 4):
-        return currentMass[1]
+        return current_mass[1]
     if last2Int != 11 and lastInt == 1:
-        return currentMass[0]
-    return currentMass[2]
+        return current_mass[0]
+    return current_mass[2]
 
 
 def DeleteTags(line: str):
@@ -108,7 +108,7 @@ def PrintHighOrLowSalaries(middle_salaries, vacancies, typeSored):
         for vacancy in vacancies:
             if vacancy.Middle_Salary == middle_salaries[i] and  vacancy not in printed:
                 printed.append(vacancy)
-                print(f'    {i + 1}) {vacancy.Name.strip()} в компании "{vacancy.Employer_Name.strip()}" - {int(middle_salaries[i])} {GetCorrectWord(str(int(middle_salaries[i])), "Rubles")} (г. {vacancy.Area_Name})')
+                print(f'    {i + 1}) {vacancy.Name.strip()} в компании "{vacancy.Employer_Name.strip()}" - {int(middle_salaries[i])} {get_correct_word(str(int(middle_salaries[i])), "Rubles")} (г. {vacancy.Area_Name})')
                 break
     print()
 
@@ -128,14 +128,14 @@ def PrintTopSkills(all_skills):
     all_skills = CalculateElements(all_skills);
     counts_of_mentions = sorted(all_skills.values(), reverse=True)
     count_of_skill = len(all_skills.values())
-    print(f'Из {count_of_skill} {GetCorrectWord(str(count_of_skill), "Skills")}, самыми популярными являются:')
+    print(f'Из {count_of_skill} {get_correct_word(str(count_of_skill), "Skills")}, самыми популярными являются:')
     printed_skills = []
     for i in range(0, min(len(counts_of_mentions), 10)):
         for skill in all_skills:
             if all_skills[skill] == counts_of_mentions[i] and  i < len(counts_of_mentions) and skill not in printed_skills:
                 printed_skills.append(skill)
                 print(f'    {i + 1}) {skill.strip()} - упоминается '
-                        f'{counts_of_mentions[i]} {GetCorrectWord(str(counts_of_mentions[i]), "p")}')
+                        f'{counts_of_mentions[i]} {get_correct_word(str(counts_of_mentions[i]), "p")}')
                 break
     print()
 
@@ -172,13 +172,13 @@ def PrintTopCities(all_cities, vacancies):
     all_cities = DeleteSmallCities(all_cities, vacancies_counts)
     middle_salaries_in_cities = DetermineCitiesWithBigSalary(all_cities, vacancies)
     middle_salaries = sorted(middle_salaries_in_cities.values(), reverse=True)
-    print(f'Из {all_cities_count} {GetCorrectWord(str(len(all_cities)), "Cities")}, самые высокие средние ЗП:')
+    print(f'Из {all_cities_count} {get_correct_word(str(len(all_cities)), "Cities")}, самые высокие средние ЗП:')
     printed_cities = []
     for i in range(0, min(len(middle_salaries), 10)):
         for city in middle_salaries_in_cities:
             if middle_salaries[i] == middle_salaries_in_cities[city] and city not in printed_cities:
                 printed_cities.append(city)
-                print(f'    {i + 1}) {city} - средняя зарплата {int(middle_salaries[i])} {GetCorrectWord(str(int(middle_salaries[i])), "Rubles")} ({all_cities[city]} {GetCorrectWord(str(all_cities[city]), "Vac")})')
+                print(f'    {i + 1}) {city} - средняя зарплата {int(middle_salaries[i])} {get_correct_word(str(int(middle_salaries[i])), "Rubles")} ({all_cities[city]} {get_correct_word(str(all_cities[city]), "Vac")})')
                 break
 
 
