@@ -1,5 +1,6 @@
 import csv
 import re
+
 file = input()
 with open(file,  encoding="utf-8-sig") as test:
     unpacker = csv.reader(test)
