@@ -144,6 +144,7 @@ def csv_reader(file_name) -> []:
         fields = data[0]
         return data[1:]
 
+
 def view_on_table_decorator(func):
     def view_on_table(name):
         data_vacancies = func(name)
@@ -170,7 +171,6 @@ def csv_parser(file_name):
         new_vacancy = get_vacancy_dict(reader[j])
         data_all_vacancies.append(new_vacancy)
     return data_all_vacancies
-
 
 
 def get_correct_fields(vacancy):
@@ -215,5 +215,6 @@ def get_correct_table(data_vacancies):
         output_fields = ['№'] + columns
 
     return my_table.get_string(start=start, end=end, fields=output_fields)
+
 
 print(csv_parser(name))
