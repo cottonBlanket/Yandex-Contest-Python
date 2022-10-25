@@ -1,14 +1,16 @@
 import csv
 import re
 
-def DeleteTags(line: str):
+
+def delete_tags(line: str):
     if line.find("\n") != -1:
         return line
     new_field = re.sub(r"\<[^>]*\>", '', line)
     new_field = re.sub(r'\s+', ' ', new_field)
     return new_field
 
-def DeleteSpace(line: str):
+
+def delete_spaces(line: str):
     arr = line.strip().split(' ')
     new_line = ''
     for word in arr:
@@ -54,7 +56,7 @@ def csv_filer(reader, list_naming):
                 dict1[i] = 'Нет'
             if dict1[i].lower() == 'true':
                 dict1[i] = 'Да'
-            dict1[i] = DeleteSpace(DeleteTags(dict1[i]).replace('\n', ', '))
+            dict1[i] = delete_spaces(delete_tags(dict1[i]).replace('\n', ', '))
         print_vacancies(dict1, dic_naming)
         print()
 
