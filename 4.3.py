@@ -314,4 +314,5 @@ def get_correct_table(data_vacancies):
 
     return my_table.get_string(start=start, end=end, fields=output_fields)
 
+
 print(csv_parser(name))
